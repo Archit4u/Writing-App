@@ -1,3 +1,4 @@
+<!--
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
@@ -11,15 +12,96 @@
                 android:background="#ffffffff">
 
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+
+</RelativeLayout>
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:ebm="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/Linearlayout"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical"
+              android:weightSum="100">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mtile"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"/>
-</RelativeLayout>
+        android:paddingBottom="@dimen/activity_vertical_margin"
+
+        android:background="#ffffffff"
+        android:layout_weight="15" >
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/colorPallet"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="85"
+        android:background="#ffffffff"
+        android:orientation="vertical" >
+
+
+
+
+        <com.jaaga.writing.CircularButton
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="30dp"
+
+
+            />
+      <com.jaaga.writing.CircularButton
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="30dp"
+
+
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button"
+            android:layout_toEndOf="@+id/button"/>
+        <com.jaaga.writing.CircularButton
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button1"
+            android:layout_toEndOf="@+id/button1"/>
+        <com.jaaga.writing.CircularButton
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button2"
+            android:layout_toEndOf="@+id/button2"/>
+        <com.jaaga.writing.CircularButton
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button3"
+            android:layout_toEndOf="@+id/button3"/>
+        <com.jaaga.writing.CircularButton
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="30dp"
+            android:src="@mipmap/eraser"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button4"
+            android:layout_toEndOf="@+id/button4"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

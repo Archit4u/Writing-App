@@ -2,6 +2,7 @@ package com.jaaga.writing;
 
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -14,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 
@@ -25,14 +25,11 @@ public class ScreenSlidePageFragment extends Fragment {
     /**
      * The argument key for the page number this fragment represents.
      */
-    //String[] aToz = getResources().getStringArray(R.array.alphabet);
+
     DrawingView dv;
     private Paint mPaint;
-    /*String[] aToz = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T",
-            "U","V","W","X","Y","Z"};*/
-    int[] images = {R.mipmap.lettera_in_trans_720,R.mipmap.ic_launcher};//,R.mipmap.c,R.mipmap.d,R.mipmap.e,R.mipmap.f,R.mipmap.g,R.mipmap.h,R.mipmap.i,
-           // R.mipmap.j,R.mipmap.k,R.mipmap.l,R.mipmap.m,R.mipmap.n,R.mipmap.o,R.mipmap.p,R.mipmap.q,R.mipmap.r,
-           // R.mipmap.s,R.mipmap.t,R.mipmap.u,R.mipmap.v,R.mipmap.w,R.mipmap.x,R.mipmap.y,R.mipmap.z};
+
+
     public static final String ARG_PAGE = "page";
 
 
@@ -40,6 +37,7 @@ public class ScreenSlidePageFragment extends Fragment {
      * The fragment's page number, which is set to the argument value for {@link #ARG_PAGE}.
      */
     private int mPageNumber;
+    //ExpandableMenuOverlay menuOverlay;
 
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
@@ -75,19 +73,94 @@ public class ScreenSlidePageFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater
                 .inflate(R.layout.fragment_screen_slide_page, container, false);
 
-        /*TextView textUpper = (TextView) rootView.findViewById(R.id.uppercase);
-        TextView textlower = (TextView) rootView.findViewById(R.id.lowercase);
-        ImageButton play = (ImageButton) rootView.findViewById(R.id.play);
-        */
 
-        /*imageView.setImageResource(images[mPageNumber]);
-        textUpper.setText(aToz[mPageNumber]);*/
-        ImageView imageView = (ImageView) rootView.findViewById(R.id.imageView);
+        final CircularButton red = (CircularButton) rootView.findViewById(R.id.button);
+        final CircularButton green = (CircularButton) rootView.findViewById(R.id.button1);
+        final CircularButton blue = (CircularButton) rootView.findViewById(R.id.button2);
+        final CircularButton yellow = (CircularButton) rootView.findViewById(R.id.button3);
+        final CircularButton cyan = (CircularButton) rootView.findViewById(R.id.button4);
+        final CircularButton eraser = (CircularButton) rootView.findViewById(R.id.button5);
+        //Here is shown how you can change the color of the button and shadow.
+        red.setButtonColor(Color.RED);
+
+        green.setButtonColor(Color.GREEN);
+        blue.setButtonColor(Color.BLUE);
+        yellow.setButtonColor(Color.YELLOW);
+        cyan.setButtonColor(Color.CYAN);
+        red.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                    red.setShadowColor(Color.BLUE);
+                    mPaint.setColor(Color.RED);
+
+            }
+        });
+        green.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                green.setShadowColor(Color.YELLOW);
+                mPaint.setColor(Color.GREEN);
+
+            }
+        });
+        yellow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                yellow.setShadowColor(Color.BLUE);
+                mPaint.setColor(Color.YELLOW);
+
+            }
+        });
+        blue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                blue.setShadowColor(Color.RED);
+                mPaint.setColor(Color.BLUE);
+
+            }
+        });
+       cyan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                cyan.setShadowColor(Color.BLUE);
+                mPaint.setColor(Color.CYAN);
+
+            }
+        });
+        eraser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                eraser.setShadowColor(Color.BLACK);
+                mPaint.setColor(Color.WHITE);
+
+            }
+        });
+
         RelativeLayout mtile = (RelativeLayout) rootView.findViewById(R.id.mtile);
         dv = new DrawingView(rootView.getContext());
         mtile.addView(dv);
        RelativeLayout rvtrans = new RelativeLayout(rootView.getContext());
-        rvtrans.setBackgroundResource(images[mPageNumber]);
+        final TypedArray images = getResources().obtainTypedArray(R.array.random_imgs);
+        rvtrans.setBackgroundResource(images.getResourceId(mPageNumber, 0));
+       images.recycle();
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
 
@@ -96,11 +169,11 @@ public class ScreenSlidePageFragment extends Fragment {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
-        mPaint.setColor(Color.GREEN);
+      //  mPaint.setColor(Color.GREEN);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
-        mPaint.setStrokeWidth(12);
+        mPaint.setStrokeWidth(50);
 
 
         return rootView;
